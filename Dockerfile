@@ -1,17 +1,8 @@
 FROM node:22-bookworm
-
-RUN apt-get update && \
-    apt-get install -y \
-    ffmpeg \
-    imagemagick && \
-    rm -rf /var/lib/apt/lists/*
-
-COPY package.json .
-
+WORKDIR /app
+RUN apt-get update && apt-get install -y ffmpeg imagemagick && rm -rf /var/lib/apt/lists/*
+COPY package*.json ./
 RUN npm install
-
 COPY . .
-
 EXPOSE 5000
-
 CMD ["npm", "start"]
