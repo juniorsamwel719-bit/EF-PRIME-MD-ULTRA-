@@ -3,8 +3,7 @@ FROM node:20-buster
 RUN apt-get update && \
     apt-get install -y \
     ffmpeg \
-    imagemagick \
-    webp && \
+    imagemagick && \
     rm -rf /var/lib/apt/lists/*
 
 COPY package.json .
